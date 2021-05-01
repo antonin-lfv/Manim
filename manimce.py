@@ -1,6 +1,3 @@
-# cd /Users/antoninlefevre/Downloads/ManimCE/manim_ce
-# manim Most_important/Github.py func -p -ql
-
 from manim import *
 import numpy as np
 from scipy import signal
@@ -34,7 +31,7 @@ class skewness_kurt(GraphScene):
         self.play(
             Transform(skew_intro, nul.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(BLUE))
         )
-        self.wait(2)
+        self.wait(5)
 
         # à gauche, skewness positif
         dist_name = "gamma"
@@ -54,7 +51,7 @@ class skewness_kurt(GraphScene):
             Transform(skewn_nul, skewn_pos),
             Transform(skew_intro, pos.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(GREEN))
         )
-        self.wait(4)
+        self.wait(5)
 
         # à droite, skewness négatif
         skewn_neg = self.get_graph(lambda x : 5*dist.pdf(x, loc=loc, scale=scale, *arg)).flip(UP)
@@ -63,7 +60,7 @@ class skewness_kurt(GraphScene):
             Transform(skewn_nul, skewn_neg),
             Transform(skew_intro, neg.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(YELLOW))
         )
-        self.wait(4)
+        self.wait(5)
         V = VGroup()
         V.add(skew_intro, self.axes)
         self.remove(skewn_nul)
@@ -72,36 +69,36 @@ class skewness_kurt(GraphScene):
         self.play(
             Transform(V, d)
         )
-        self.wait(4)
+        self.wait(5)
         self.remove(V)
         self.setup_axes()
 
         # Loi normale : kurtosis nul
         kurt_nul = self.get_graph(lambda x : 5/np.sqrt(2*np.pi)*np.exp(-0.5*(x-2)**2))
-        nul = Text("Kurtosis nul, la distribution est aplattie comme la loi normale")
+        nul = Text("Kurtosis nul, la distribution est aplatie comme la loi normale")
         self.add(kurt_nul)
         self.play(
             Transform(d, nul.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(BLUE))
         )
-        self.wait(4)
+        self.wait(5)
 
         # kurtosis positif
         kurt_pos = self.get_graph(lambda x : 8/np.sqrt(2*np.pi)*np.exp(-0.5*(x-2)**2))
-        pos = Text("Kurtosis positif, la distribution est moins aplattie que la loi normale")
+        pos = Text("Kurtosis positif, la distribution est moins aplatie que la loi normale")
         self.play(
             Transform(kurt_nul,kurt_pos),
             Transform(d, pos.move_to(RIGHT*1+DOWN * 2).scale(0.5).set_color(GREEN))
         )
-        self.wait(4)
+        self.wait(5)
 
         # kurtosis négatif
         kurt_neg = self.get_graph(lambda x : 2/np.sqrt(2*np.pi)*np.exp(-0.5*(x-2)**2))
-        pos = Text("Kurtosis négatif, la distribution est plus aplattie que la loi normale")
+        pos = Text("Kurtosis négatif, la distribution est plus aplatie que la loi normale")
         self.play(
             Transform(kurt_nul, kurt_neg),
             Transform(d, pos.move_to(RIGHT*1+DOWN * 2).scale(0.5).set_color(YELLOW))
         )
-        self.wait(4)
+        self.wait(5)
         self.remove(
             kurt_nul, d
         )
