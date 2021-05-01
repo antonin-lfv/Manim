@@ -8,7 +8,7 @@ import scipy.stats
 import scipy
 
 # skewness et kurtosis
-class skewness(GraphScene):
+class skewness_kurt(GraphScene):
     def __init__(self, **kwargs):
         GraphScene.__init__(
             self,
@@ -18,6 +18,7 @@ class skewness(GraphScene):
             y_max = 4,
             graph_origin = DOWN + LEFT * 4,
             **kwargs)
+
     def construct(self):
 
         # Intro
@@ -53,7 +54,7 @@ class skewness(GraphScene):
             Transform(skewn_nul, skewn_pos),
             Transform(skew_intro, pos.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(GREEN))
         )
-        self.wait(2)
+        self.wait(4)
 
         # à droite, skewness négatif
         skewn_neg = self.get_graph(lambda x : 5*dist.pdf(x, loc=loc, scale=scale, *arg)).flip(UP)
@@ -62,7 +63,7 @@ class skewness(GraphScene):
             Transform(skewn_nul, skewn_neg),
             Transform(skew_intro, neg.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(YELLOW))
         )
-        self.wait(2)
+        self.wait(4)
         V = VGroup()
         V.add(skew_intro, self.axes)
         self.remove(skewn_nul)
@@ -71,7 +72,7 @@ class skewness(GraphScene):
         self.play(
             Transform(V, d)
         )
-        self.wait(2)
+        self.wait(4)
         self.remove(V)
         self.setup_axes()
 
@@ -82,7 +83,7 @@ class skewness(GraphScene):
         self.play(
             Transform(d, nul.move_to(RIGHT*1+UP * 2).scale(0.5).set_color(BLUE))
         )
-        self.wait()
+        self.wait(4)
 
         # kurtosis positif
         kurt_pos = self.get_graph(lambda x : 8/np.sqrt(2*np.pi)*np.exp(-0.5*(x-2)**2))
@@ -91,7 +92,7 @@ class skewness(GraphScene):
             Transform(kurt_nul,kurt_pos),
             Transform(d, pos.move_to(RIGHT*1+DOWN * 2).scale(0.5).set_color(GREEN))
         )
-        self.wait()
+        self.wait(4)
 
         # kurtosis négatif
         kurt_neg = self.get_graph(lambda x : 2/np.sqrt(2*np.pi)*np.exp(-0.5*(x-2)**2))
@@ -100,7 +101,7 @@ class skewness(GraphScene):
             Transform(kurt_nul, kurt_neg),
             Transform(d, pos.move_to(RIGHT*1+DOWN * 2).scale(0.5).set_color(YELLOW))
         )
-        self.wait(2)
+        self.wait(4)
         self.remove(
             kurt_nul, d
         )
