@@ -12,6 +12,8 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 
 ## Animation pour comprendre ce qu'est le kurtosis et le skewness
 
+<br/> 
+
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116785188-7b944e80-aa98-11eb-94a0-020071958081.gif" height="500">
 <p/>
