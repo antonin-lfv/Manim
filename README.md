@@ -147,7 +147,7 @@ class skewness_kurt(GraphScene):
 
 <br/>
 
-<p align="center"><a href="#Animation-pour-comprendre-ce-quest-le-kurtosis-et-le-skewness"><img src="http://randojs.com/images/backToTopButton.png" alt="Haut de la page" height="29"/></a></p>
+<p align="center"><a href="#Index"><img src="http://randojs.com/images/backToTopButton.png" alt="Haut de la page" height="29"/></a></p>
 
 <br/>
 
