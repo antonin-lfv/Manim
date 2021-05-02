@@ -12,8 +12,18 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 
 <br/>
 
+# Index
 
-## Animation pour comprendre ce qu'est le kurtosis et le skewness
+1. [Exemples basiques](#Exemples-basiques)
+2. [Graphiques 2D](#Graphiques-2D)
+	1. [Skewness et kurtosis](#Skewness-et-kurtosis)
+4. [Graphiques 3D](#Graphiques-3D)
+5. [Animations SVG](#Animations-SVG)
+
+
+# Exemples basiques
+# Graphiques 2D
+## Skewness et kurtosis
 
 <br/> 
 <br/>
@@ -126,6 +136,14 @@ class skewness_kurt(GraphScene):
         )
         self.wait()
 ```
+
+<br/>
+
+# Graphiques 3D
+
+<br/>
+
+# Animations SVG
 
 <br/>
 
