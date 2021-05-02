@@ -4,7 +4,48 @@ from scipy import signal
 import scipy.stats
 import scipy
 
-# skewness et kurtosis
+
+# basique
+## latex
+class latex_formules(Scene):
+    def construct(self):
+        latex = MathTex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}")
+        self.play(FadeInFrom(latex))
+        self.wait()
+
+## polygone
+class polygon(GraphScene):
+    def construct(self):
+        self.setup_axes(animate=True)
+        polyg = [self.coords_to_point(0,0), #P1
+                 self.coords_to_point(0,3.5), #P2
+                 self.coords_to_point(3.5,1.75), #P3
+                 self.coords_to_point(3.5,0), #P4
+                 self.coords_to_point(0,0)] #P1 pour fermer la figure
+        plol = Polygon(*polyg).move_to(UP+DOWN)
+        self.play(ShowCreation(plol))
+
+## aligner text
+class Aligner_text(Scene):
+    def construct(self):
+        text1 = Tex("text1").shift(2 * UL)  # UpLeft
+        text2 = Tex("text2")
+        text3 = Tex("text3").shift(2 * DR)  # DownRight
+        group = VGroup(text1, text2, text3).scale(1.1)
+        self.add(group)
+        self.play(group.animate.arrange(RIGHT, .25, center=False))
+
+# ligne couleur gradient
+class LigneGradient(Scene):
+    def construct(self):
+        line_gradient = Line(LEFT * 4, RIGHT * 4)
+        line_gradient.set_color(color=[PURPLE, BLUE, YELLOW, GREEN, RED])
+        self.add(line_gradient)
+        self.wait()
+
+# 2D
+
+## skewness et kurtosis
 class skewness_kurt(GraphScene):
     def __init__(self, **kwargs):
         GraphScene.__init__(
@@ -108,8 +149,11 @@ class skewness_kurt(GraphScene):
         )
         self.wait()
 
+# 3D
 
-# stickman
+# SVG
+
+## stickman
 class SVGStickMan(GraphScene, MovingCameraScene):
     def construct(self):
         start_man = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/stick_man_plain.svg").set_color(WHITE)
