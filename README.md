@@ -35,7 +35,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 <br/>
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116785188-7b944e80-aa98-11eb-94a0-020071958081.gif" height="500">
+	  <img src="https://user-images.githubusercontent.com/63207451/116785188-7b944e80-aa98-11eb-94a0-020071958081.gif" height="300">
 <p/>
 
 ```py
