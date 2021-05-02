@@ -13,18 +13,6 @@ class latex_formules(Scene):
         self.play(FadeInFrom(latex))
         self.wait()
 
-## polygone
-class polygon(GraphScene):
-    def construct(self):
-        self.setup_axes(animate=True)
-        polyg = [self.coords_to_point(0,0), #P1
-                 self.coords_to_point(0,3.5), #P2
-                 self.coords_to_point(3.5,1.75), #P3
-                 self.coords_to_point(3.5,0), #P4
-                 self.coords_to_point(0,0)] #P1 pour fermer la figure
-        plol = Polygon(*polyg).move_to(UP+DOWN)
-        self.play(ShowCreation(plol))
-
 ## aligner text
 class Aligner_text(Scene):
     def construct(self):
@@ -44,6 +32,18 @@ class LigneGradient(Scene):
         self.wait()
 
 # 2D
+
+## polygone
+class polygon(GraphScene):
+    def construct(self):
+        self.setup_axes(animate=True)
+        polyg = [self.coords_to_point(0,0), #P1
+                 self.coords_to_point(0,3.5), #P2
+                 self.coords_to_point(3.5,1.75), #P3
+                 self.coords_to_point(3.5,0), #P4
+                 self.coords_to_point(0,0)] #P1 pour fermer la figure
+        plol = Polygon(*polyg).move_to(UP+DOWN)
+        self.play(ShowCreation(plol))
 
 ## skewness et kurtosis
 class skewness_kurt(GraphScene):
