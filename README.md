@@ -22,7 +22,13 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 
 
 # Exemples basiques
+
+<br/>
+
 # Graphiques 2D
+
+<br/>
+
 ## Skewness et kurtosis
 
 <br/> 
