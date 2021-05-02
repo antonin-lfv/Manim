@@ -15,19 +15,91 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 # Index
 
 1. [Exemples basiques](#Exemples-basiques)
+	1. [Formules latex](#Formules-latex)
+	2. [Aligner du texte](#Aligner-du-texte)
+	3. [Ligne couleurs gradient](#Ligne-couleurs-gradient)
 2. [Graphiques 2D](#Graphiques-2D)
-	1. [Skewness et kurtosis](#Skewness-et-kurtosis)
-4. [Graphiques 3D](#Graphiques-3D)
-5. [Animations SVG](#Animations-SVG)
+	1. [Polygone](#Polygone)
+	2. [Skewness et kurtosis](#Skewness-et-kurtosis)
+3. [Graphiques 3D](#Graphiques-3D)
+4. [Animations SVG](#Animations-SVG)
+	1. [Stickman](#Stickman)
 
 
 # Exemples basiques
 
 <br/>
 
+## Formules latex
+
+<p align="center">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814422-3126d680-ab59-11eb-8f6a-bacefb3eeaed.gif" height="300">
+<p/>
+
+```py
+class latex_formules(Scene):
+    def construct(self):
+        latex = MathTex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}")
+        self.play(FadeInFrom(latex))
+        self.wait()
+```
+<br/>
+
+## Aligner du texte
+
+<p align="center">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814430-3d129880-ab59-11eb-9d5f-674b6488c26c.gif" height="300">
+<p/>
+
+```py
+class Aligner_text(Scene):
+    def construct(self):
+        text1 = Tex("text1").shift(2 * UL)  # UpLeft
+        text2 = Tex("text2")
+        text3 = Tex("text3").shift(2 * DR)  # DownRight
+        group = VGroup(text1, text2, text3).scale(1.1)
+        self.add(group)
+        self.play(group.animate.arrange(RIGHT, .25, center=False))
+```
+<br/>
+
+## Ligne couleurs gradient
+
+<p align="center">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814437-4b60b480-ab59-11eb-89bf-99db2bfba138.gif" height="300">
+<p/>
+
+```py
+class LigneGradient(Scene):
+    def construct(self):
+        line_gradient = Line(LEFT * 4, RIGHT * 4)
+        line_gradient.set_color(color=[PURPLE, BLUE, YELLOW, GREEN, RED])
+        self.add(line_gradient)
+        self.wait()
+```
+
 # Graphiques 2D
 
 <br/>
+
+## Polygone
+
+<p align="center">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814445-561b4980-ab59-11eb-979f-dd322a001660.gif" height="300">
+<p/>
+
+```py
+class polygon(GraphScene):
+    def construct(self):
+        self.setup_axes(animate=True)
+        polyg = [self.coords_to_point(0,0), #P1
+                 self.coords_to_point(0,3.5), #P2
+                 self.coords_to_point(3.5,1.75), #P3
+                 self.coords_to_point(3.5,0), #P4
+                 self.coords_to_point(0,0)] #P1 pour fermer la figure
+        plol = Polygon(*polyg).move_to(UP+DOWN)
+        self.play(ShowCreation(plol))
+```
 
 ## Skewness et kurtosis
 
@@ -151,6 +223,41 @@ class skewness_kurt(GraphScene):
 
 # Animations SVG
 
+<br/>
+
+## Stickman
+
+<p align="center">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814462-67fcec80-ab59-11eb-84bd-81e2a6e5e6b0.gif" height="300">
+<p/>
+
+```py
+class SVGStickMan(GraphScene, MovingCameraScene):
+    def construct(self):
+        start_man = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/stick_man_plain.svg").set_color(WHITE)
+        start_man_2 = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/stick_man_plain.svg").set_color(WHITE)
+        wave_man = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/stick_man_wave.svg").set_color(WHITE)
+        wave_man_2 = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/stick_man_wave.svg").set_color(WHITE)
+        base = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/stick_man_plain.svg").set_color(WHITE)
+        self.camera.frame.save_state()
+
+        self.add(start_man.move_to(2*LEFT))
+        self.add(start_man_2.move_to(2*RIGHT))
+        self.play(self.camera.frame.animate.move_to(start_man.get_top()).scale(0.4))
+        self.wait(0.5)
+        salut = Tex("Salut !").set_color(YELLOW).next_to(start_man, UP+LEFT, buff=0.5)
+        self.play(Transform(start_man, wave_man.move_to(2*LEFT)), FadeIn(salut))
+        self.wait()
+
+
+        self.play(self.camera.frame.animate.move_to(start_man_2.get_top()))
+        self.wait(0.5)
+        salut_2 = Tex("Hey !").set_color(YELLOW).next_to(start_man_2, UP+RIGHT, buff=0.5)
+        self.play(Transform(start_man_2, wave_man_2.move_to(2*RIGHT)), FadeIn(salut_2))
+        self.play(FadeOut(salut), FadeOut(salut_2), run_time=0.01)
+        self.play(Transform(start_man, base.move_to(2 * LEFT)), Transform(start_man_2, base.copy().move_to(2 * RIGHT)))
+        self.play(Restore(self.camera.frame))
+```
 <br/>
 
 <p align="center"><a href="#Index"><img src="http://randojs.com/images/backToTopButton.png" alt="Haut de la page" height="29"/></a></p>
