@@ -107,7 +107,7 @@ class polygon(GraphScene):
 <br/>
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116785188-7b944e80-aa98-11eb-94a0-020071958081.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116815034-fa05f480-ab5b-11eb-8f4b-29fd98e034ba.gif" height="300">
 <p/>
 
 ```py
