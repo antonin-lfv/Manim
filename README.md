@@ -57,7 +57,7 @@ class latex_formules(Scene):
 	  <img src="https://user-images.githubusercontent.com/63207451/116814430-3d129880-ab59-11eb-9d5f-674b6488c26c.gif" height="300">
 <p/>
 
-<details open="open">
+<details>
   <summary>Code</summary>
 	
 ```py
@@ -80,7 +80,7 @@ class Aligner_text(Scene):
 	  <img src="https://user-images.githubusercontent.com/63207451/116814437-4b60b480-ab59-11eb-89bf-99db2bfba138.gif" height="300">
 <p/>
 
-<details open="open">
+<details>
   <summary>Code</summary>
 	
 ```py
@@ -103,6 +103,9 @@ class LigneGradient(Scene):
 	  <img src="https://user-images.githubusercontent.com/63207451/116814445-561b4980-ab59-11eb-979f-dd322a001660.gif" height="300">
 <p/>
 
+<details>
+  <summary>Code</summary>
+	
 ```py
 class polygon(GraphScene):
     def construct(self):
@@ -115,6 +118,7 @@ class polygon(GraphScene):
         plol = Polygon(*polyg).move_to(UP+DOWN)
         self.play(ShowCreation(plol))
 ```
+</details>
 
 ## Skewness et kurtosis
 
@@ -125,6 +129,9 @@ class polygon(GraphScene):
 	  <img src="https://user-images.githubusercontent.com/63207451/116815034-fa05f480-ab5b-11eb-8f4b-29fd98e034ba.gif" height="300">
 <p/>
 
+<details>
+  <summary>Code</summary>
+	
 ```py
 class skewness_kurt(GraphScene):
     def __init__(self, **kwargs):
@@ -229,6 +236,7 @@ class skewness_kurt(GraphScene):
         )
         self.wait()
 ```
+</details>
 
 <br/>
 
@@ -246,6 +254,9 @@ class skewness_kurt(GraphScene):
 	  <img src="https://user-images.githubusercontent.com/63207451/116814462-67fcec80-ab59-11eb-84bd-81e2a6e5e6b0.gif" height="300">
 <p/>
 
+<details>
+  <summary>Code</summary>
+	
 ```py
 class SVGStickMan(GraphScene, MovingCameraScene):
     def construct(self):
@@ -273,6 +284,9 @@ class SVGStickMan(GraphScene, MovingCameraScene):
         self.play(Transform(start_man, base.move_to(2 * LEFT)), Transform(start_man_2, base.copy().move_to(2 * RIGHT)))
         self.play(Restore(self.camera.frame))
 ```
+
+</details>
+
 <br/>
 
 <p align="center"><a href="#Index"><img src="http://randojs.com/images/backToTopButton.png" alt="Haut de la page" height="29"/></a></p>
