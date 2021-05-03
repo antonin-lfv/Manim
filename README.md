@@ -98,6 +98,109 @@ class LigneGradient(Scene):
 ```
 </details>
 
+<br/>
+
+## Animation carré déformé
+
+<p align="center">
+	  <img src="" height="350">
+<p/>
+
+<details>
+  <summary >Code</summary>
+	
+```python 
+class WarpSquare(Scene):
+    def construct(self):
+        square = Square()
+        self.add(square)
+        self.play(ApplyPointwiseFunction(
+            lambda point: complex_to_R3(np.exp(R3_to_complex(point))),
+            square
+        ))
+        self.wait()
+```
+
+</details>
+
+<br/>
+
+## Déplacement disque
+
+<p align="center">
+	  <img src="" height="350">
+<p/>
+
+<details>
+  <summary >Code</summary>
+	
+```python 
+class movecircle(Scene):
+    def construct(self):
+        sphere = Sphere().set_color(RED)
+        self.add(sphere)
+        self.play(ApplyMethod(sphere.shift, UP), run_time=2)
+        self.play(ApplyMethod(sphere.scale, 0.4), run_time=2)
+        self.wait()
+```
+
+</details>
+
+<br/>
+
+## Distance Euclidienne
+
+<p align="center">
+	  <img src="" height="350">
+<p/>
+
+<details>
+  <summary >Code</summary>
+	
+```python 
+class distance_euclidienne(GraphScene):
+    CONFIG = {
+        "camera_config": {"background_color": "#000000"},
+        "axes_color": WHITE,
+    }
+    def construct(self):
+        # Distance entre les deux points
+        A = Dot().move_to(LEFT * 3 + DOWN * 1.5)
+        B = Dot().move_to(3 * RIGHT + 2 * UP)
+        arrow1 = Line(A.get_center(), B.get_center(), buff=0.1)  # ou DashedLine
+        arrow1.set_color(WHITE)
+        self.play(Write(A.set_color(RED), run_time=0.2))
+        self.play(Write(B.set_color(RED), run_time=0.2))
+        self.play(ShowCreation(arrow1), run_time=0.2)
+
+        # Points name
+        apoint = MathTex(r"A(x_{A}, y_{A})").next_to(A,LEFT,buff=0.5)
+        bpoint = MathTex(r"B(x_{B}, y_{B})").next_to(B,UP,buff=0.5)
+        self.play(Write(apoint),Write(bpoint), run_time=0.2)
+
+        # Line Y
+        Y = DashedLine(B.get_bottom(), B.get_center()+3.5*DOWN)
+        self.play(Write(Y.set_color(YELLOW), run_time=0.2))
+
+        # Line X
+        X = DashedLine(A.get_right(), B.get_center()+3.5*DOWN)
+        self.play(Write(X.set_color(YELLOW), run_time=0.2))
+
+        # Braces
+        t1 = Brace(X, DOWN, buf=1)
+        t2 = Brace(Y, RIGHT, buf=1)
+        txt1 = t1.get_text("$x_{B}-x_{A}$")
+        txt2 = t2.get_text("$y_{B}-y_{A}$")
+        self.play(Write(t1),Write(txt1), run_time=0.2)
+        self.play(Write(t2),Write(txt2), run_time=0.2)
+
+        self.wait()
+```
+
+</details>
+
+<br/>
+
 # Graphiques 2D
 
 <br/>
@@ -124,6 +227,74 @@ class polygon(GraphScene):
         self.play(ShowCreation(plol))
 ```
 </details>
+
+<br/>
+
+## Ligne verticale sous une courbe
+
+<p align="center">
+	  <img src="" height="350">
+<p/>
+
+<details>
+  <summary >Code</summary>
+	
+```python 
+class Plot_line(GraphScene):
+    def construct(self):
+        self.setup_axes()
+        self.v_graph = self.get_graph(lambda x: 4 * x - x ** 2, x_min=0, x_max=4)
+        self.variable_point_label = "x_0"
+        self.add_T_label(x_val=1)
+        self.add(self.v_graph)
+        self.wait()
+```
+
+</details>
+
+<br/>
+
+## Sigmoid
+
+<p align="center">
+	  <img src="" height="350">
+<p/>
+
+<details>
+  <summary >Code</summary>
+	
+```python 
+class sigmoid(GraphScene):
+    def construct(self):
+        self.y_max = 1
+        self.y_min = -1
+        self.x_max = 7
+        self.x_min = -7
+        self.y_tick_frequency = 0.25
+        self.axes_color = WHITE
+        self.graph_origin = ORIGIN
+        self.x_axis_label = "$x$"
+        self.y_axis_label = "$y$"
+        sigmoid_txt = MathTex(r"Fonction Sigmoid : \frac{1}{1+e^{-x}}")
+        self.play(Write(sigmoid_txt))
+        self.wait(1)
+        self.play(sigmoid_txt.animate.shift(DOWN * 2 + LEFT * 3.5).scale(0.7),
+                  run_time=1)
+
+        self.setup_axes()
+        graph = self.get_graph(lambda x: 1 / (1 + np.exp(-x)), color=RED)
+        self.play(ShowCreation(graph), run_time=4)
+
+    def setup_axes(self, **kwargs):
+        GraphScene.setup_axes(self)
+        self.y_axis.label_direction = UP
+        self.x_axis.label_direction = RIGHT
+        self.play(Write(self.x_axis), Write(self.y_axis))
+```
+
+</details>
+
+<br/>
 
 ## Skewness et kurtosis
 
