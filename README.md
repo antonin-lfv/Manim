@@ -37,7 +37,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 <p/>
 
 <details>
-  <summary style="color:#FF0000";>Code</summary>
+  <summary >Code</summary>
 	
 ```python 
 class latex_formules(Scene): 
