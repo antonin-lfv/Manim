@@ -39,7 +39,8 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 <details open="open">
   <summary>Code</summary>
 	
-```python class latex_formules(Scene): 
+```python 
+class latex_formules(Scene): 
     def construct(self):
         latex = MathTex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}")
         self.play(FadeInFrom(latex))
@@ -56,6 +57,9 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 	  <img src="https://user-images.githubusercontent.com/63207451/116814430-3d129880-ab59-11eb-9d5f-674b6488c26c.gif" height="300">
 <p/>
 
+<details open="open">
+  <summary>Code</summary>
+	
 ```py
 class Aligner_text(Scene):
     def construct(self):
@@ -66,6 +70,8 @@ class Aligner_text(Scene):
         self.add(group)
         self.play(group.animate.arrange(RIGHT, .25, center=False))
 ```
+
+</details>
 <br/>
 
 ## Ligne couleurs gradient
@@ -74,6 +80,9 @@ class Aligner_text(Scene):
 	  <img src="https://user-images.githubusercontent.com/63207451/116814437-4b60b480-ab59-11eb-89bf-99db2bfba138.gif" height="300">
 <p/>
 
+<details open="open">
+  <summary>Code</summary>
+	
 ```py
 class LigneGradient(Scene):
     def construct(self):
@@ -82,6 +91,7 @@ class LigneGradient(Scene):
         self.add(line_gradient)
         self.wait()
 ```
+</details>
 
 # Graphiques 2D
 
