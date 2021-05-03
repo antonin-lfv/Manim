@@ -38,13 +38,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 
 <details open="open">
   <summary>code</summary>
-	```py
-class latex_formules(Scene):
-    def construct(self):
-        latex = MathTex(r"\sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}")
-        self.play(FadeInFrom(latex))
-        self.wait()
-	```
+https://pygments.org/demo/?lexer=html&code=class%20latex_formules(Scene)%3A%0A%20%20%20%20def%20construct(self)%3A%0A%20%20%20%20%20%20%20%20latex%20%3D%20MathTex(r%22%5Csum_%7Bn%3D1%7D%5E%5Cinfty%20%5Cfrac%7B1%7D%7Bn%5E2%7D%20%3D%20%5Cfrac%7B%5Cpi%5E2%7D%7B6%7D%22)%0A%20%20%20%20%20%20%20%20self.play(FadeInFrom(latex))%0A%20%20%20%20%20%20%20%20self.wait()
 </details>
 
 <br/>
