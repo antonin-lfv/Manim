@@ -103,7 +103,7 @@ class LigneGradient(Scene):
 ## Animation carré déformé
 
 <p align="center">
-	  <img src="" height="350">
+	  <img src="https://user-images.githubusercontent.com/63207451/116870605-1a44ba80-ac13-11eb-8072-09fe52358a35.gif" height="350">
 <p/>
 
 <details>
@@ -128,7 +128,7 @@ class WarpSquare(Scene):
 ## Déplacement disque
 
 <p align="center">
-	  <img src="" height="350">
+	  <img src="https://user-images.githubusercontent.com/63207451/116870651-2b8dc700-ac13-11eb-8b8e-2536f580eabe.gif" height="350">
 <p/>
 
 <details>
@@ -151,7 +151,7 @@ class movecircle(Scene):
 ## Distance Euclidienne
 
 <p align="center">
-	  <img src="" height="350">
+	  <img src="https://user-images.githubusercontent.com/63207451/116870660-2f214e00-ac13-11eb-9588-56b55423cde0.gif" height="350">
 <p/>
 
 <details>
@@ -233,7 +233,7 @@ class polygon(GraphScene):
 ## Ligne verticale sous une courbe
 
 <p align="center">
-	  <img src="" height="350">
+	  <img src="https://user-images.githubusercontent.com/63207451/116870663-30527b00-ac13-11eb-938c-87f8132376a9.gif" height="350">
 <p/>
 
 <details>
@@ -257,7 +257,7 @@ class Plot_line(GraphScene):
 ## Sigmoid
 
 <p align="center">
-	  <img src="" height="350">
+	  <img src="https://user-images.githubusercontent.com/63207451/116870640-2892d680-ac13-11eb-8af1-8ee91c0ef5c9.gif" height="350">
 <p/>
 
 <details>
