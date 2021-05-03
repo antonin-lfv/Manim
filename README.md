@@ -33,7 +33,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 ## Formules latex
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116814422-3126d680-ab59-11eb-8f6a-bacefb3eeaed.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814422-3126d680-ab59-11eb-8f6a-bacefb3eeaed.gif" height="600">
 <p/>
 
 <details>
