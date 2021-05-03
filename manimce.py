@@ -248,6 +248,82 @@ class skewness_kurt(GraphScene):
 
 # 3D
 
+## descente de gradient
+class Gradient_descent_3D(ThreeDScene):
+    def construct(self):
+        ####### 3D
+        self.y_tick_frequency = 0.5
+        self.x_tick_frequency = 0.5
+        self.graph_origin = ORIGIN
+        resolution_fa = 30
+        self.set_camera_orientation(phi=60 * DEGREES, theta=150 * DEGREES, distance=7)
+
+        def param_plane(u, v):
+            x = u
+            y = v
+            z = 0
+            return np.array([x, y, z])
+
+        plane = ParametricSurface(
+            param_plane,
+            resolution=(resolution_fa, resolution_fa),
+            v_min=-1,
+            v_max=+1,
+            u_min=-1,
+            u_max=+1,
+        )
+        plane.scale_about_point(2, ORIGIN)
+
+        def f(x,y):
+            return 0.5*(0.5*x+0.5*y)**2+0.5*(0.5*x-0.5*y)**2
+
+        def param_carree(u, v):
+            x = u
+            y = v
+            z = f(x,y)
+            return np.array([x, y, z])
+
+        carree_plane = ParametricSurface(
+            param_carree,
+            resolution=(resolution_fa, resolution_fa),
+            v_min=-2,
+            v_max=+2,
+            u_min=-2,
+            u_max=+2,
+        )
+
+        carree_plane.scale_about_point(1, ORIGIN)
+        carree_plane.set_style(fill_opacity=1)
+        plane.set_style(fill_color=GREEN, fill_opacity=0.9)
+        carree_plane.set_style(stroke_color=GREEN)
+        carree_plane.set_fill_by_checkerboard(BLACK, opacity=0.9)
+
+        axes = ThreeDAxes()
+
+        self.add(axes)
+        self.play(Write(plane))
+        self.begin_ambient_camera_rotation(rate=-0.4)
+        self.play(Transform(plane, carree_plane), run_time=4)
+        for i in np.linspace(-1.8,0,10):
+            d = Dot(axes.coords_to_point(0, i, f(0, i))).scale(0.8).set_color(RED)
+            self.add(d)
+            self.wait(0.8)
+            self.remove(d)
+        for i in np.linspace(0.1,0.3,5):
+            d = Dot(axes.coords_to_point(0, i, f(0, i))).scale(0.8).set_color(RED)
+            self.add(d)
+            self.wait(0.8)
+            self.remove(d)
+        for i in np.linspace(0.2, 0, 5):
+            d = Dot(axes.coords_to_point(0, i, f(0, i))).scale(0.8).set_color(RED)
+            self.add(d)
+            self.wait(0.7)
+            self.remove(d)
+        self.add(Dot(axes.coords_to_point(0, 0, f(0, 0))).scale(0.8).set_color(RED))
+        self.wait(7)
+        self.stop_ambient_camera_rotation()
+        self.wait()
+
 # SVG
 
 ## stickman
