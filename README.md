@@ -54,7 +54,7 @@ class latex_formules(Scene):
 ## Aligner du texte
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116814430-3d129880-ab59-11eb-9d5f-674b6488c26c.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814430-3d129880-ab59-11eb-9d5f-674b6488c26c.gif" height="350">
 <p/>
 
 <details>
@@ -77,7 +77,7 @@ class Aligner_text(Scene):
 ## Ligne couleurs gradient
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116814437-4b60b480-ab59-11eb-89bf-99db2bfba138.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814437-4b60b480-ab59-11eb-89bf-99db2bfba138.gif" height="350">
 <p/>
 
 <details>
@@ -100,7 +100,7 @@ class LigneGradient(Scene):
 ## Polygone
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116814445-561b4980-ab59-11eb-979f-dd322a001660.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814445-561b4980-ab59-11eb-979f-dd322a001660.gif" height="350">
 <p/>
 
 <details>
@@ -126,7 +126,7 @@ class polygon(GraphScene):
 <br/>
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116815034-fa05f480-ab5b-11eb-8f4b-29fd98e034ba.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116815034-fa05f480-ab5b-11eb-8f4b-29fd98e034ba.gif" height="350">
 <p/>
 
 <details>
@@ -251,7 +251,7 @@ class skewness_kurt(GraphScene):
 ## Stickman
 
 <p align="center">
-	  <img src="https://user-images.githubusercontent.com/63207451/116814462-67fcec80-ab59-11eb-84bd-81e2a6e5e6b0.gif" height="300">
+	  <img src="https://user-images.githubusercontent.com/63207451/116814462-67fcec80-ab59-11eb-84bd-81e2a6e5e6b0.gif" height="350">
 <p/>
 
 <details>
