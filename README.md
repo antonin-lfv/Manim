@@ -3,6 +3,11 @@
 <p/>
 
 <br/>
+$`\sqrt{2}`$
+
+```math
+SE = \frac{\sigma}{\sqrt{n}}
+```
 
 <p align="center">
 Dans ce Github je vais partager des animations réalisées avec Manim, une librairie python développée par le YouTubeur 3Blue1Brown, qui permet de créer des animations de façon puissante et épurée. J'utilise ici la version 4.0 de Manim CE (Community Edition) qui est la version de Manim régulièrement mise à jour par la communauté et qui est la plus stable. Si vous voulez utilisez Manim l'installation est détaillée sur le site Manim community. 
