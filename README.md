@@ -25,6 +25,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 	- [Polygone](#Polygone)
 	- [Ligne verticale sous une courbe](#Ligne-verticale-sous-une-courbe)
 	- [Sigmoid](#Sigmoid)
+	- [Évolution d'une épidémie](#évolution-dune-épidémie)
 	- [Skewness et kurtosis](#Skewness-et-kurtosis)
 3. [Graphiques 3D](#Graphiques-3D)
 	- [Descente de Gradient](#Descente-de-Gradient)
