@@ -35,7 +35,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 	- [Skewness et kurtosis](#Skewness-et-kurtosis)
 3. [Graphiques 3D](#Graphiques-3D)
 	- [Descente de Gradient](#Descente-de-Gradient)
-	- [Animation surfaces](#Animations-surfaces)
+	- [Animation surfaces](#Animation-surfaces)
 4. [Animations SVG](#Animations-SVG)
 	- [Stickman](#Stickman)
 	- [Zoom sur un neurone](#zoom-sur-un-neurone)
