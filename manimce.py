@@ -13,6 +13,97 @@ class latex_formules(Scene):
         self.play(FadeInFrom(latex))
         self.wait()
 
+## identité remarquable (a-b)^2
+class IR_amoinsb_2(Scene):  # (a-b)^2
+    def construct(self):
+        formula = TexMobject(
+            "(",  # 0
+            "a",  # 1
+            "-",  # 2
+            "b",  # 3
+            ")",  # 4
+            "^{2}",  # 5
+            "=",  # 6
+            "a",  # 7
+            "^{2}",  # 8
+            "-",  # 9
+            "2",  # 10
+            "a",  # 11
+            "b",  # 12
+            "+",  # 13
+            "b",  # 14
+            "^{2}"  # 15
+        )
+        formula.scale(2)
+        self.play(Write(formula[0:7]))  # 0 à 6
+        formula[7].set_color(RED)
+        formula[14].set_color(BLUE)
+        formula[11].set_color(RED)
+        formula[12].set_color(BLUE)
+        self.wait()
+        self.play(
+            ReplacementTransform(formula[1].copy(), formula[7]),
+            Write(formula[8]),
+            ReplacementTransform(formula[2].copy(), formula[9]),
+            ReplacementTransform(formula[3].copy(), formula[9]),
+            Write(formula[13]),
+            ReplacementTransform(formula[3].copy(), formula[14]),
+            Write(formula[15]),
+            run_time=2
+        )
+        self.wait(1.5)
+        self.play(
+            Write(formula[10]),
+            ReplacementTransform(formula[1].copy(), formula[11]),
+            ReplacementTransform(formula[3].copy(), formula[12]),
+            run_time=2
+        )
+        self.wait()
+
+## identité remarquable a^2-b^2
+class IR_a_b_2(Scene):  # a^2-b^2
+    def construct(self):
+        formula = Tex(
+            "a",  # 0
+            "^{2}",  # 1
+            "-",  # 2
+            "b",  # 3
+            "^{2}",  # 4
+            "=",  # 5
+            "(",  # 6
+            "a",  # 7
+            "-",  # 8
+            "b",  # 9
+            ")",  # 10
+            "(",  # 11
+            "a",  # 12
+            "+",  # 13
+            "b",  # 14
+            ")"  # 15
+        )
+        formula.scale(2)
+        self.play(Write(formula[0:6]))  # 0 à 5
+        formula[7].set_color(RED)
+        formula[9].set_color(BLUE)
+        formula[14].set_color(RED)
+        formula[12].set_color(BLUE)
+        self.wait()
+        self.play(
+            ReplacementTransform(formula[0].copy(), formula[7]),
+            ReplacementTransform(formula[0].copy(), formula[12]),
+            Write(formula[6]), Write(formula[11]),
+            Write(formula[10]), Write(formula[15]),
+            run_time=1.5
+        )
+        self.wait(0.5)
+        self.play(
+            Write(formula[8]), Write(formula[13]),
+            ReplacementTransform(formula[3].copy(), formula[9]),
+            ReplacementTransform(formula[3].copy(), formula[14]),
+            run_time=1.5
+        )
+        self.wait()
+        
 ## aligner text
 class Aligner_text(Scene):
     def construct(self):
