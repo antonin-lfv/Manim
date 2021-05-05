@@ -104,6 +104,48 @@ class IR_a_b_2(Scene):  # a^2-b^2
         )
         self.wait()
         
+## Texte en couleur et entouré
+class TextColor(Scene):  # f(x)=ax+b
+    def construct(self):
+        text = Tex("f(x)", "=", "a", "x", "+", "b")
+        text[0].set_color(WHITE)
+        text[1].set_color(WHITE)
+        text[2].set_color(BLUE)
+        text[3].set_color(WHITE)
+        text[4].set_color("#FFFFFF")  # Hexadecimal color
+        text[5].set_color(RED)
+        # text.to_corner(DL)
+
+        frameBoxa = SurroundingRectangle(text[2], buff=0.8 * SMALL_BUFF)
+        frameBoxa.set_stroke(BLUE, 3)
+        boxtextea = Tex("{\\normalsize On fait varier a}")
+        boxtextea.set_color(BLUE, 3)
+        boxtextea.next_to(text[2].get_center(), UP, buff=0.7)
+
+        frameBoxb = SurroundingRectangle(text[5], buff=0.8 * SMALL_BUFF)
+        frameBoxb.set_stroke(RED)
+        boxtexteb = Tex("{\\normalsize et b}")
+        boxtexteb.set_color(RED)
+        boxtexteb.next_to(text[5].get_center(), UP, buff=0.7)
+
+        self.play(Write(text))
+        self.wait(.1)
+
+        self.play(ShowCreation(frameBoxa))
+        self.play(Write(boxtextea))
+        self.wait(0.4)
+        self.remove(frameBoxa)
+        self.wait(0.1)
+        self.remove(boxtextea)
+
+        self.play(ShowCreation(frameBoxb))
+        self.play(Write(boxtexteb))
+        self.wait(0.4)
+        self.remove(frameBoxb)
+        self.wait(0.1)
+        self.remove(boxtexteb)
+        self.wait(0.5)
+        
 ## aligner text
 class Aligner_text(Scene):
     def construct(self):
