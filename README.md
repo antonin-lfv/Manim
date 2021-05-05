@@ -18,6 +18,8 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 1. [Exemples basiques](#Exemples-basiques)
 	- [Formules latex](#Formules-latex)
 	- [identités remarquables](#identités-remarquables)
+		- [(a-b)²](#(a-b)²)
+		- [a²-b²](#a²-b²)      
 	- [Aligner du texte](#Aligner-du-texte)
 	- [Ligne couleurs gradient](#Ligne-couleurs-gradient)
 	- [Animation carré déformé](#Animation-carré-déformé)
@@ -61,6 +63,8 @@ class latex_formules(Scene):
 <br/>
 
 ## Identités remarquables
+
+### (a-b)²
 
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/117114850-a0384100-ad8c-11eb-8661-9f693e2f5369.gif" height="350">
@@ -120,6 +124,8 @@ class IR_amoinsb_2(Scene):  # (a-b)^2
 </details>
 
 <br/>
+
+### a²-b²
 
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/117114404-1b4d2780-ad8c-11eb-949d-91e5afe31f37.gif" height="350">
