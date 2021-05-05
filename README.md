@@ -19,7 +19,8 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 	- [Formules latex](#Formules-latex)
 	- [identités remarquables](#identités-remarquables)
 		- [(a-b)²](#a-b)
-		- [a²-b²](#a-b-1)      
+		- [a²-b²](#a-b-1)
+	- [Texte en couleur et entouré](#Texte-en-couleur-et-entouré)    
 	- [Aligner du texte](#Aligner-du-texte)
 	- [Ligne couleurs gradient](#Ligne-couleurs-gradient)
 	- [Animation carré déformé](#Animation-carré-déformé)
@@ -183,6 +184,61 @@ class IR_a_b_2(Scene):  # a^2-b^2
         )
         self.wait()
 
+```
+</details>
+<br/>
+
+## Texte en couleur et entouré
+
+<br/>
+<p align="center">
+	  <img src="https://user-images.githubusercontent.com/63207451/117121735-4ee07f80-ad95-11eb-92b4-addd94c2ad31.gif" height="350">
+<p/>
+
+<details>
+  <summary>Code</summary>
+
+```py
+class TextColor(Scene):  # f(x)=ax+b
+    def construct(self):
+        text = Tex("f(x)", "=", "a", "x", "+", "b")
+        text[0].set_color(WHITE)
+        text[1].set_color(WHITE)
+        text[2].set_color(BLUE)
+        text[3].set_color(WHITE)
+        text[4].set_color("#FFFFFF")  # Hexadecimal color
+        text[5].set_color(RED)
+        # text.to_corner(DL)
+
+        frameBoxa = SurroundingRectangle(text[2], buff=0.8 * SMALL_BUFF)
+        frameBoxa.set_stroke(BLUE, 3)
+        boxtextea = Tex("{\\normalsize On fait varier a}")
+        boxtextea.set_color(BLUE, 3)
+        boxtextea.next_to(text[2].get_center(), UP, buff=0.7)
+
+        frameBoxb = SurroundingRectangle(text[5], buff=0.8 * SMALL_BUFF)
+        frameBoxb.set_stroke(RED)
+        boxtexteb = Tex("{\\normalsize et b}")
+        boxtexteb.set_color(RED)
+        boxtexteb.next_to(text[5].get_center(), UP, buff=0.7)
+
+        self.play(Write(text))
+        self.wait(.1)
+
+        self.play(ShowCreation(frameBoxa))
+        self.play(Write(boxtextea))
+        self.wait(0.4)
+        self.remove(frameBoxa)
+        self.wait(0.1)
+        self.remove(boxtextea)
+
+        self.play(ShowCreation(frameBoxb))
+        self.play(Write(boxtexteb))
+        self.wait(0.4)
+        self.remove(frameBoxb)
+        self.wait(0.1)
+        self.remove(boxtexteb)
+        self.wait(0.5)
 ```
 </details>
 <br/>
