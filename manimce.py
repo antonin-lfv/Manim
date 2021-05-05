@@ -898,3 +898,50 @@ class SVGStickMan(GraphScene, MovingCameraScene):
         self.play(FadeOut(salut), FadeOut(salut_2), run_time=0.01)
         self.play(Transform(start_man, base.move_to(2 * LEFT)), Transform(start_man_2, base.copy().move_to(2 * RIGHT)))
         self.play(Restore(self.camera.frame))
+
+## Zoom sur un neurone
+class ZoomOnNeuron(ZoomedScene, MovingCameraScene):
+    def __init__(self, **kwargs):
+        ZoomedScene.__init__(
+            self,
+            zoom_factor=0.4,
+            zoomed_display_height=3,
+            zoomed_display_width=4,
+            image_frame_stroke_width=15,
+            zoomed_camera_config={
+                "default_frame_stroke_width": 2,
+                },
+            **kwargs
+        )
+    def construct(self):
+        # image du neurone
+        neurone_1 = SVGMobject("/Users/antoninlefevre/Downloads/ManimCE/SVG_files/neuron_video.svg").set_color(WHITE).scale(3).rotate(PI/2)
+        self.play(Write(neurone_1))
+
+        # texte du zoom
+        #zoomed_camera_text = Text("Dendrites", color=WHITE).scale(1.1) # box qui suit le zoom
+
+        zoomed_camera = self.zoomed_camera
+        zoomed_display = self.zoomed_display
+        frame = zoomed_camera.frame
+        zoomed_display_frame = zoomed_display.display_frame
+
+        frame.move_to(neurone_1[0].get_left())
+        frame.set_color(PURPLE)
+
+        # placer le cadre du zoom
+        zd_rect = BackgroundRectangle(zoomed_display.move_to(neurone_1[0].get_left()+DOWN), fill_opacity=0, buff=MED_SMALL_BUFF)
+        self.add_foreground_mobject(zd_rect)
+
+        unfold_camera = UpdateFromFunc(zd_rect, lambda rect: rect.replace(zoomed_display))
+
+        self.play(ShowCreation(frame), direction=DOWN)
+        self.activate_zooming()
+        self.play(self.get_zoomed_display_pop_out_animation(), unfold_camera)
+
+        self.wait(2)
+
+        # dezoom et fin de l'animation
+        self.play(self.get_zoomed_display_pop_out_animation(), unfold_camera, rate_func=lambda t: smooth(1 - t))
+        self.play(Uncreate(zoomed_display_frame), FadeOut(frame))
+        self.wait()
