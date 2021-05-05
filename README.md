@@ -43,6 +43,7 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 
 ## Formules latex
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116814422-3126d680-ab59-11eb-8f6a-bacefb3eeaed.gif" height="350">
 <p/>
@@ -64,8 +65,10 @@ class latex_formules(Scene):
 
 ## Identités remarquables
 
+<br/>
 ## (a-b)²
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/117114850-a0384100-ad8c-11eb-8661-9f693e2f5369.gif" height="350">
 <p/>
@@ -127,6 +130,7 @@ class IR_amoinsb_2(Scene):  # (a-b)^2
 
 ## a²-b²
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/117114404-1b4d2780-ad8c-11eb-949d-91e5afe31f37.gif" height="350">
 <p/>
@@ -180,10 +184,11 @@ class IR_a_b_2(Scene):  # a^2-b^2
 
 ```
 </details>
-
+<br/>
 
 ## Aligner du texte
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116814430-3d129880-ab59-11eb-9d5f-674b6488c26c.gif" height="350">
 <p/>
@@ -207,6 +212,7 @@ class Aligner_text(Scene):
 
 ## Ligne couleurs gradient
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116814437-4b60b480-ab59-11eb-89bf-99db2bfba138.gif" height="350">
 <p/>
@@ -228,6 +234,7 @@ class LigneGradient(Scene):
 
 ## Animation carré déformé
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116870605-1a44ba80-ac13-11eb-8072-09fe52358a35.gif" height="350">
 <p/>
@@ -253,6 +260,7 @@ class WarpSquare(Scene):
 
 ## Déplacement disque
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116870651-2b8dc700-ac13-11eb-8b8e-2536f580eabe.gif" height="350">
 <p/>
@@ -276,6 +284,7 @@ class movecircle(Scene):
 
 ## Distance Euclidienne
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116870660-2f214e00-ac13-11eb-9588-56b55423cde0.gif" height="350">
 <p/>
@@ -333,6 +342,7 @@ class distance_euclidienne(GraphScene):
 
 ## Polygone
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116814445-561b4980-ab59-11eb-979f-dd322a001660.gif" height="350">
 <p/>
@@ -358,6 +368,7 @@ class polygon(GraphScene):
 
 ## Ligne verticale sous une courbe
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116870663-30527b00-ac13-11eb-938c-87f8132376a9.gif" height="350">
 <p/>
@@ -382,6 +393,7 @@ class Plot_line(GraphScene):
 
 ## Sigmoid
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116870640-2892d680-ac13-11eb-8af1-8ee91c0ef5c9.gif" height="350">
 <p/>
@@ -424,6 +436,7 @@ class sigmoid(GraphScene):
 
 ## Évolution d'une épidémie
 
+<br/>
 <p align="center">
 <img src="https://user-images.githubusercontent.com/63207451/114284499-b1718480-9a50-11eb-8b13-a7803d66c94f.gif" width="600">
 	<p/>
@@ -724,6 +737,7 @@ class skewness_kurt(GraphScene):
 
 ## Descente de gradient
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/117108691-d8875180-ad83-11eb-83b0-42ef904829bc.gif" height="350">
 <p/>
@@ -819,6 +833,7 @@ class Gradient_descent_3D(ThreeDScene):
 
 ## Stickman
 
+<br/>
 <p align="center">
 	  <img src="https://user-images.githubusercontent.com/63207451/116814462-67fcec80-ab59-11eb-84bd-81e2a6e5e6b0.gif" height="350">
 <p/>
