@@ -297,6 +297,182 @@ class sigmoid(GraphScene):
 
 <br/>
 
+## Évolution d'une épidémie
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/63207451/114284499-b1718480-9a50-11eb-8b13-a7803d66c94f.gif" width="600">
+	<p/>
+	
+<details>
+  <summary >Code</summary>
+	
+```py
+class sim_virus_courbes(GraphScene, MovingCameraScene):
+    def __init__(self, **kwargs):
+        GraphScene.__init__(
+            self,
+            graph_origin=DOWN * 2.3 + LEFT * 0.95,
+            x_axis_visibility=False,
+            y_axis_visibility=False,
+            **kwargs
+        )
+
+    def construct(self):
+        self.camera.background_color = '#FFFFFF'
+        def distance_e(x, y):  # distance entre 2 points du plan cartésien
+            return distance.euclidean([x[0], x[1]], [y[0], y[1]])
+
+        def chance_infecte(p):  # return True si il devient infecté avec une proba p
+            proba = int(p * 100)
+            return rd.randint(0, 100) <= proba
+
+        def immuniser(l, l2, p):  # l: infectés; l2: immunisés précédents
+            drop = 0
+            for i in range(len(l)):
+                proba = int(p * 100)
+                if rd.randint(0, 100) <= proba:
+                    l2.append(l[i - drop])
+                    l.remove(l[i - drop])
+                    drop += 1
+            return l, l2
+
+        def deces(l, l2, l3, p):  # l: infectés; l2: décès précédents; l3: immunisés
+            l_p = l[:]  # création d'une copie pour éviter erreur d'indice
+            for i in range(len(l_p)):
+                proba = int(p * 100)
+                if rd.randint(0, 100) <= proba and l_p[i] not in l3:
+                    l2.append(l_p[i])
+                    l.remove(l_p[i])
+            return l, l2
+
+        # Caméra et axes ############
+        self.camera.frame.save_state()
+        self.play(self.camera.frame.animate.scale(1.2).move_to(2*DOWN))  # 0.65
+        self.setup_axes()
+
+        # Paramètres virus ##############
+
+        nb_individu = 5000  # recommandé : 500 à 10000
+        variance_pop = 1  # recommandé : 1
+        rayon_contamination = 0.6  # recommandé : 0.5
+        infectiosite = 0.1  # recommandé : 10%
+        p = 0.1  # recommandé : 10%
+        d = 0.05  # recommandé : 5%
+
+        # dataset
+        x, y = make_blobs(n_samples=nb_individu, centers=1, cluster_std=variance_pop)
+        df = pd.DataFrame(dict(x=x[:, 0],
+                               y=x[:, 1]))
+
+        # création des courbes finales et listes des coordonnées
+        data = dict(courbe_sains=[], coord_infectes=[], coord_sains=[], coord_immunises=[], coord_deces=[])
+        numero_infecte_1 = rd.randint(0, nb_individu - 1)  # on choisit le premier individu infecté au hasard
+        coord_1er_infecte = [df['x'][numero_infecte_1], df['y'][numero_infecte_1]]  # coordonnées du 1er infecté
+
+        # Remplissage des listes
+        for k in range(nb_individu):
+            if k == numero_infecte_1:
+                data['coord_infectes'].append(coord_1er_infecte)
+            else:
+                data['coord_sains'].append([df['x'][k], df['y'][k]])
+
+        data['courbe_sains'].append(nb_individu - 1)
+
+        ## plot
+        sains_1 = VGroup()
+        infect_1 = VGroup()
+        dece_1 = VGroup()
+        immun_1 = VGroup()
+
+        # first points
+        for i in data['coord_sains']:
+            sains_1.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#2358DA'))
+        for i in data['coord_infectes']:
+            infect_1.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#FB0D0D'))
+        for i in data['coord_deces']:
+            dece_1.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#BE11C9'))
+        for i in data['coord_immunises']:
+            immun_1.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#0DC501'))
+
+        # jour 1
+        points_dico = [dict(sains = sains_1,infecte = infect_1,deces = dece_1, immunise = immun_1)]
+        courbes_dico = [dict(sains=[0,5*len(data['coord_sains'])/nb_individu],
+                             infecte=[0,5*len(data['coord_infectes'])/nb_individu],
+                             deces=[0,5*len(data['coord_deces'])/nb_individu],
+                             immunise=[0,5*len(data['coord_immunises'])/nb_individu])]
+
+        # jours 2 à n
+        jour=1
+        while len(data['coord_infectes']) > 0.08 * nb_individu or len(data['courbe_sains']) < 10:  # condition d'arrêt
+
+            for k in range(len(data['coord_infectes'])):
+                non_sains = 0
+                for j in range(len(data['coord_sains'])):
+                    if distance_e(data['coord_infectes'][k],data['coord_sains'][j - non_sains]) < rayon_contamination and data['coord_sains'][j - non_sains] not in data['coord_infectes'] and chance_infecte(infectiosite):
+                        data['coord_infectes'].append(data['coord_sains'][j - non_sains])
+                        data['coord_sains'].remove(data['coord_sains'][j - non_sains])
+                        non_sains += 1
+
+            coord_infectes1, data['coord_immunises'] = immuniser(data['coord_infectes'], data['coord_immunises'], p)
+            data['coord_infectes'], data['coord_deces'] = deces(coord_infectes1, data['coord_deces'],
+                                                                data['coord_immunises'], d)
+            data['courbe_sains'].append(len(data['coord_sains']))
+
+            # plot des points
+            sains_2 = VGroup()
+            infect_2 = VGroup()
+            dece_2 = VGroup()
+            immun_2 = VGroup()
+            for i in data['coord_sains']:
+                sains_2.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#2358DA'))
+            for i in data['coord_infectes']:
+                infect_2.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#FB0D0D'))
+            for i in data['coord_deces']:
+                dece_2.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#BE11C9'))
+            for i in data['coord_immunises']:
+                immun_2.add(Dot(self.coords_to_point(i[0], i[1])).scale(0.3).set_color('#0DC501'))
+
+
+            points_dico.append(dict(sains=sains_2,infecte=infect_2,deces=dece_2,immunise=immun_2))
+            courbes_dico.append(dict(sains=[jour, 5*len(data['coord_sains']) /nb_individu],
+                                 infecte=[jour, 5*len(data['coord_infectes']) / nb_individu],
+                                 deces=[jour, 5*len(data['coord_deces']) / nb_individu],
+                                 immunise=[jour, 5*len(data['coord_immunises']) / nb_individu]))
+            jour+=1
+
+        # afficher jour 0 à n
+        self.setup_axes()
+        self.add(points_dico[0]['sains'], points_dico[0]['infecte'], points_dico[0]['deces'],points_dico[0]['immunise'])
+        self.setup_axes_2()
+        self.add(Dot(self.coords_to_point(courbes_dico[0]['sains'][0], courbes_dico[0]['sains'][1])).set_color('#2358DA').scale(0.5),
+                 Dot(self.coords_to_point(courbes_dico[0]['infecte'][0], courbes_dico[0]['infecte'][1])).set_color('#FB0D0D').scale(0.5),
+                 Dot(self.coords_to_point(courbes_dico[0]['deces'][0], courbes_dico[0]['deces'][1])).set_color('#BE11C9').scale(0.5),
+                 Dot(self.coords_to_point(courbes_dico[0]['immunise'][0], courbes_dico[0]['immunise'][1])).set_color('#0DC501').scale(0.5))
+
+        self.wait(1)
+        for i in range (1,jour):
+            self.setup_axes()
+            self.add(points_dico[i]['sains'],points_dico[i]['infecte'],points_dico[i]['deces'],points_dico[i]['immunise'])
+            self.setup_axes_2()
+            self.add(Dot(self.coords_to_point(courbes_dico[i]['sains'][0]*18/jour,courbes_dico[i]['sains'][1])).set_color('#2358DA').scale(0.5),
+                     Dot(self.coords_to_point(courbes_dico[i]['infecte'][0]*18/jour,courbes_dico[i]['infecte'][1])).set_color('#FB0D0D').scale(0.5),
+                     Dot(self.coords_to_point(courbes_dico[i]['deces'][0]*18/jour,courbes_dico[i]['deces'][1])).set_color('#BE11C9').scale(0.5),
+                     Dot(self.coords_to_point(courbes_dico[i]['immunise'][0]*18/jour,courbes_dico[i]['immunise'][1])).set_color('#0DC501').scale(0.5),
+                     Line(Dot(self.coords_to_point(courbes_dico[i-1]['sains'][0]*18/jour,courbes_dico[i-1]['sains'][1])).scale(0.5).get_center(),Dot(self.coords_to_point(courbes_dico[i]['sains'][0]*18/jour,courbes_dico[i]['sains'][1])).scale(0.5).get_center(),width=0.8).set_color('#2358DA'),
+                     Line(Dot(self.coords_to_point(courbes_dico[i-1]['infecte'][0]*18/jour,courbes_dico[i-1]['infecte'][1])).scale(0.5).get_center(),Dot(self.coords_to_point(courbes_dico[i]['infecte'][0]*18/jour,courbes_dico[i]['infecte'][1])).scale(0.5).get_center(),width=0.8).set_color('#FB0D0D'),
+                     Line(Dot(self.coords_to_point(courbes_dico[i-1]['deces'][0]*18/jour,courbes_dico[i-1]['deces'][1])).scale(0.5).get_center(),Dot(self.coords_to_point(courbes_dico[i]['deces'][0]*18/jour,courbes_dico[i]['deces'][1])).scale(0.5).get_center(),width=0.8).set_color('#BE11C9'),
+                     Line(Dot(self.coords_to_point(courbes_dico[i-1]['immunise'][0]*18/jour,courbes_dico[i-1]['immunise'][1])).scale(0.5).get_center(),Dot(self.coords_to_point(courbes_dico[i]['immunise'][0]*18/jour,courbes_dico[i]['immunise'][1])).scale(0.5).get_center(),width=0.8).set_color('#0DC501'))
+            self.wait(1)
+
+        self.wait(0.5)
+
+    def setup_axes_2(self, **kwargs):
+        self.graph_origin = DOWN * 5.5 + LEFT * 7,
+        GraphScene.setup_axes(self)	
+```
+</details>
+<br/>
+
 ## Skewness et kurtosis
 
 <br/> 
