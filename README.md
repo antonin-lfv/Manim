@@ -15,21 +15,21 @@ Dans ce Github je vais partager des animations réalisées avec Manim, une libra
 # Index
 
 1. [Exemples basiques](#Exemples-basiques)
-	1. [Formules latex](#Formules-latex)
-	2. [Aligner du texte](#Aligner-du-texte)
-	3. [Ligne couleurs gradient](#Ligne-couleurs-gradient)
-	4. [Animation carré déformé](#Animation-carré-déformé)
-	5. [Déplacement disque](#Déplacement-disque)
-	6. [Distance Euclidienne](#Distance-Euclidienne)
+	- [Formules latex](#Formules-latex)
+	- [Aligner du texte](#Aligner-du-texte)
+	- [Ligne couleurs gradient](#Ligne-couleurs-gradient)
+	- [Animation carré déformé](#Animation-carré-déformé)
+	- [Déplacement disque](#Déplacement-disque)
+	- [Distance Euclidienne](#Distance-Euclidienne)
 2. [Graphiques 2D](#Graphiques-2D)
-	1. [Polygone](#Polygone)
-	2. [Ligne verticale sous une courbe](#Ligne-verticale-sous-une-courbe)
-	3. [Sigmoid](#Sigmoid)
-	4. [Skewness et kurtosis](#Skewness-et-kurtosis)
+	- [Polygone](#Polygone)
+	- [Ligne verticale sous une courbe](#Ligne-verticale-sous-une-courbe)
+	- [Sigmoid](#Sigmoid)
+	- [Skewness et kurtosis](#Skewness-et-kurtosis)
 3. [Graphiques 3D](#Graphiques-3D)
-	1. [Descente de Gradient](#Descente-de-Gradient)
+	- [Descente de Gradient](#Descente-de-Gradient)
 4. [Animations SVG](#Animations-SVG)
-	1. [Stickman](#Stickman)
+	- [Stickman](#Stickman)
 
 
 # Exemples basiques
