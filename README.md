@@ -424,7 +424,7 @@ class skewness_kurt(GraphScene):
 ## Descente de gradient
 
 <p align="center">
-	  <img src="" height="350">
+	  <img src="https://user-images.githubusercontent.com/63207451/117108691-d8875180-ad83-11eb-83b0-42ef904829bc.gif" height="350">
 <p/>
 
 <details>
@@ -504,7 +504,8 @@ class Gradient_descent_3D(ThreeDScene):
         self.add(Dot(axes.coords_to_point(0, 0, f(0, 0))).scale(0.8).set_color(RED))
         self.wait(7)
         self.stop_ambient_camera_rotation()
-        self.wait()```
+        self.wait()
+```
 
 </details>
 
