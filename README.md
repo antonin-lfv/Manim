@@ -69,6 +69,7 @@ class latex_formules(Scene):
 ## Identités remarquables
 
 <br/>
+
 ## (a-b)²
 
 <br/>
